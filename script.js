@@ -37,5 +37,5 @@ function sketchReset(){
 
 createSketchpadGrid();
 
-const resetButton = document.querySelector('.reset-button');
+const resetButton = document.querySelector('#reset-button');
 resetButton.addEventListener('click', sketchReset);

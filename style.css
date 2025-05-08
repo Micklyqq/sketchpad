@@ -47,7 +47,7 @@ header{
     margin-bottom: 10px;
 }
 
-.reset-button{
+.button{
     width: 100px;
     background-color: #101828;
     border: 2px solid black;
@@ -56,12 +56,12 @@ header{
     padding: 3px;
 }
 
-.reset-button:hover{
+.button:hover{
     background-color: hsl(220, 43%, 21%);
     cursor: pointer;
 }
 
-.reset-button:active{
+.button:active{
     position: relative;
     left: 1px;
     top: 1px;
