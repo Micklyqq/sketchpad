@@ -2,6 +2,8 @@ const divSize = 16;
 
 function createSketchpadGrid(containerWidth = null, elementSize = null){
     const container = document.querySelector('.container');
+    container.innerHTML = '';
+
     elementSize = elementSize ? elementSize : 16;
     containerWidth = containerWidth ? containerWidth : container.clientWidth;
     
@@ -35,7 +37,32 @@ function sketchReset(){
     }
 }
 
+function resizeSketchpadGrid(){
+    while(true){
+        let userRequest = parseInt(prompt('Enter grid number (1 - 100)'));
+        if(userRequest == NaN || 1 > userRequest > 100){
+            alert('Invalid value, please enter again');
+            continue;
+            
+        } else {
+            const containerSize = document.querySelector('.container').clientWidth
+            const elementSize = calculateGridElementSize(userRequest, containerSize);
+
+            createSketchpadGrid(undefined,elementSize);
+            break;
+        }
+    }
+}
+
+function calculateGridElementSize(numberOfElements, containerSize){
+    return Math.trunc(containerSize/numberOfElements);
+}
+
 createSketchpadGrid();
 
 const resetButton = document.querySelector('#reset-button');
 resetButton.addEventListener('click', sketchReset);
+
+const resizeButton = document.querySelector('#resize-button');
+resizeButton.addEventListener('click', resizeSketchpadGrid);
+
