@@ -1,11 +1,11 @@
 const divSize = 16;
 
-function createSketchpadGrid(containerWidth = null, elementSize = null){
+function createSketchpadGrid(containerWidth, elementSize){
     const container = document.querySelector('.container');
     container.innerHTML = '';
 
-    elementSize = elementSize ? elementSize : 16;
-    containerWidth = containerWidth ? containerWidth : container.clientWidth;
+    elementSize = elementSize == undefined ? elementSize : 16;
+    containerWidth = containerWidth == undefined ? containerWidth : container.clientWidth;
     
     const squaresPerRow = Math.trunc(containerWidth/elementSize);
     const squaresPerColumn = Math.trunc(containerWidth/elementSize);
@@ -57,6 +57,8 @@ function resizeSketchpadGrid(){
 function calculateGridElementSize(numberOfElements, containerSize){
     return Math.trunc(containerSize/numberOfElements);
 }
+
+
 
 createSketchpadGrid();
 
