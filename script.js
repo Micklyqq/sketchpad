@@ -26,4 +26,16 @@ function elementHoverEffect(element){
     })
 }
 
+function sketchReset(){
+    const container = document.querySelector('.container');
+    const elements = container.children;
+
+    for(let element of elements){
+        element.style.backgroundColor = '#101828';
+    }
+}
+
 createSketchpadGrid();
+
+const resetButton = document.querySelector('.reset-button');
+resetButton.addEventListener('click', sketchReset);
