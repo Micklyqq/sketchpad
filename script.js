@@ -4,8 +4,8 @@ function createSketchpadGrid(containerWidth, elementSize){
     const container = document.querySelector('.container');
     container.innerHTML = '';
 
-    elementSize = elementSize == undefined ? elementSize : 16;
-    containerWidth = containerWidth == undefined ? containerWidth : container.clientWidth;
+    elementSize = elementSize == undefined ? 16 : elementSize;
+    containerWidth = containerWidth == undefined ? container.clientWidth : containerWidth;
     
     const squaresPerRow = Math.trunc(containerWidth/elementSize);
     const squaresPerColumn = Math.trunc(containerWidth/elementSize);
