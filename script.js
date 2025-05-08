@@ -21,10 +21,10 @@ function createSketchpadGrid(containerWidth, elementSize){
     }
 }
 
-function elementHoverEffect(element){
+function elementHoverEffect(element, color){
     element.addEventListener('mouseenter', (event) => {
         let target = event.target;
-        target.style.backgroundColor = 'white';
+        target.style.backgroundColor = color == undefined ? 'white' : color;
     })
 }
 
