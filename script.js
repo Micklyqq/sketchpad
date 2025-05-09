@@ -22,10 +22,19 @@ function createSketchpadGrid(containerWidth, elementSize){
 }
 
 function elementHoverEffect(element, color){
-    element.addEventListener('mouseenter', (event) => {
+    const prevHandler = hoverHandlersMap.get(element);
+
+    if(prevHandler){
+        element.removeEventListener('mouseenter', prevHandler);
+    }
+
+    function handleHover(event){
         let target = event.target;
         target.style.backgroundColor = color == undefined ? 'white' : color;
-    })
+    }
+    
+    element.addEventListener('mouseenter', handleHover);
+    hoverHandlersMap.set(element, handleHover);
 }
 
 function sketchReset(){
@@ -58,7 +67,19 @@ function calculateGridElementSize(numberOfElements, containerSize){
     return Math.trunc(containerSize/numberOfElements);
 }
 
+function enableRandomColorMode(){
+    const container = document.querySelector('.container');
+    const elements = container.children;
+    
+    for(let element of elements){
+        const randomColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
+        elementHoverEffect(element, randomColor);
+    }
+}
 
+const hoverHandlersMap = new WeakMap();
+const randomColorButton = document.querySelector('#random-color-mode-button');
+randomColorButton.addEventListener('click', enableRandomColorMode);
 
 createSketchpadGrid();
 
@@ -67,4 +88,7 @@ resetButton.addEventListener('click', sketchReset);
 
 const resizeButton = document.querySelector('#resize-button');
 resizeButton.addEventListener('click', resizeSketchpadGrid);
+
+
+
 
